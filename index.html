@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CSV to JSON</title>
+    <script src="papaparse.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,600">
+    <link rel="stylesheet" type="text/css" href="csvparser.css"/>
+  </head>
+  <body>
+    <div id="main">
+      <div id="sequence"></div>
+      <div id="chart">
+        <div id="explanation" style="visibility: hidden;">
+          <span id="percentage"></span><br/>
+          of tracked instances have this combination
+        </div>
+      </div>
+    </div>
+    <div id="settings">
+      <br>
+      <p>Instructions: Choose your 2 features first, and then upload the CSV with tracking data.</p>
+      <label>Feature 1</label>
+      <br>
+      <select id="feature1"></select>
+      <input type="checkbox" id="blank-checkbox-1">Exclude blank values</input>
+      <br>
+      <label>Feature 2</label>
+      <br>
+      <select id="feature2"></select>
+      <input type="checkbox" id="blank-checkbox-2">Exclude blank values</input>
+    </div>
+    <br>
+    <div id="choose-file">
+      <label>Choose a CSV file:</label>
+      <input id="file-button" type="file" accept=".csv">
+    </div>
+    <br>
+    <div id="show-json">
+      <label>Array</label><br>
+      <textarea id="show-json-content"> </textarea>
+    </div>
+    <br>
+    <div id="sidebar">
+      <input type="checkbox" id="togglelegend"> Show legend<br/>
+      <div id="legend" style="visibility: hidden;"></div>
+    </div>
+    <script type="text/javascript" src="csvparser.js"></script>
+    <script type="text/javascript">
+      // Hack to make this example display correctly in an iframe on bl.ocks.org
+      d3.select(self.frameElement).style("height", "700px");
+  </script> 
+  </body>
+</html>
