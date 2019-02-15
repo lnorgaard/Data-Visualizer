@@ -11,6 +11,8 @@ blanks2.addEventListener("change", reformatData, false);
 columns = [];
 
 function addDropdownOptions() {
+  feat1.options.length = 0;
+  feat2.options.length = 0;
 	for (var c = 0; c < columns.length; c++) {
 		var option = document.createElement("option");
 		var columntitle = columns[c];
@@ -74,7 +76,7 @@ function reformatData() {
   if (typeof data == "undefined") {
     return;
   }
-  
+
   vis = d3.selectAll("svg").remove();
   vis = d3.select("#chart").append("svg:svg")
     .attr("width", width)
@@ -196,8 +198,22 @@ function mouseover(d) {
     percentageString = "< 0.1%";
   }
 
+  if (d.parent.data.name != "root") {
+    combo1 = feat1.value + ": " + d.parent.data.name;
+    combo2 = feat2.value + ": " +d.data.name;
+  } else {
+    combo1 = feat1.value + ": " + d.data.name;
+    combo2 = ""
+  }
+
   d3.select("#percentage")
       .text(percentageString);
+
+  d3.select("#combo1")
+      .text(combo1);
+
+  d3.select("#combo2")
+      .text(combo2);
 
   d3.select("#explanation")
       .style("visibility", "");
